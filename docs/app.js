@@ -63,7 +63,7 @@ function barChart(mount, rows, { unit = "", digits = 2, domainMax, desc = false,
   for (const t of ticks) {
     const x = LABEL_W + scale(t);
     el("line", { x1: x, y1: 0, x2: x, y2: H - TICK_H, stroke: t === 0 ? C.baseline : C.hairline, "stroke-width": 1 }, svg);
-    const lbl = el("text", { x, y: H - 6, "text-anchor": "middle", fill: C.mute, "font-size": 11, "aria-hidden": "true" }, svg);
+    const lbl = el("text", { x, y: H - 6, "text-anchor": "middle", fill: C.mute, "font-size": 12.5, "aria-hidden": "true" }, svg);
     lbl.textContent = fmt(t, digits) + (t === ticks[ticks.length - 1] && unit ? " " + unit : "");
   }
 
@@ -72,7 +72,7 @@ function barChart(mount, rows, { unit = "", digits = 2, domainMax, desc = false,
     const w = Math.max(scale(r.value), 2);
     const color = r.device === "cpu" ? C.cpu : C.gpu;
 
-    const name = el("text", { x: LABEL_W - 12, y: y + BAR / 2 + 4, "text-anchor": "end", fill: C.ink, "font-size": 13, "font-weight": 600, "aria-hidden": "true" }, svg);
+    const name = el("text", { x: LABEL_W - 12, y: y + BAR / 2 + 5, "text-anchor": "end", fill: C.ink, "font-size": 14.5, "font-weight": 600, "aria-hidden": "true" }, svg);
     name.textContent = r.name;
 
     // hit target first (renders under bar; CSS sibling selector lifts bar).
@@ -91,7 +91,7 @@ function barChart(mount, rows, { unit = "", digits = 2, domainMax, desc = false,
       style: `animation-delay:${i * 45}ms`,
     }, svg);
 
-    const val = el("text", { x: LABEL_W + w + 8, y: y + BAR / 2 + 4, fill: C.ink2, "font-size": 12.5, class: "bar-val", "aria-hidden": "true" }, svg);
+    const val = el("text", { x: LABEL_W + w + 8, y: y + BAR / 2 + 5, fill: C.ink2, "font-size": 14, class: "bar-val", "aria-hidden": "true" }, svg);
     val.textContent = fmt(r.value, digits) + (unit ? " " + unit : "");
 
     const lines = [`device: ${r.device || "?"}`, ...(r.detail || [])];
