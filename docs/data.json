@@ -1,0 +1,697 @@
+{
+ "hardware": "NVIDIA RTX 4090 Laptop GPU (16GB) / WSL2 devcontainer",
+ "repeat": 10,
+ "texts": [
+  {
+   "id": "short_greeting",
+   "text": "Hello there! How are you doing today?"
+  },
+  {
+   "id": "medium_news",
+   "text": "Researchers announced a breakthrough in battery technology on Tuesday, claiming the new solid-state design can charge in under five minutes while retaining ninety percent capacity after a decade of daily use."
+  },
+  {
+   "id": "long_narrative",
+   "text": "The lighthouse keeper climbed the spiral staircase one last time, his lantern casting long shadows on the whitewashed walls. For forty-three years he had tended this light, through storms that shook the tower and calm nights when the beam swept over a glassy sea. Tomorrow the automation crew would arrive, and the old lamp room would belong to machines. He paused at the top, looking out at the horizon, and smiled at the memory of it all."
+  },
+  {
+   "id": "numbers_dates",
+   "text": "On March 3rd, 2026, the company reported quarterly revenue of $4,532,891.07, a 12.5% increase year over year, with 1,204 new customers across 38 countries."
+  },
+  {
+   "id": "hard_words",
+   "text": "The choir's ethereal rendition of the Worcestershire anthem left the colonel thoroughly nonplussed, though the subtle epitome of rural England remained indubitably picturesque."
+  },
+  {
+   "id": "emotive",
+   "text": "No way... you actually did it?! That's incredible! I honestly never thought we'd pull this off \u2014 wow, I'm speechless!"
+  },
+  {
+   "id": "question_dialog",
+   "text": "Are you sure this is the right address? The map says we should have arrived ten minutes ago, but I don't see any building here at all."
+  },
+  {
+   "id": "technical",
+   "text": "The API gateway routes each HTTPS request through a rate limiter before invoking the authentication microservice, which validates the JSON web token against the OAuth server's public key."
+  }
+ ],
+ "models": [
+  {
+   "id": "chatterbox_turbo",
+   "label": "Chatterbox-Turbo 350M (MIT)",
+   "device": "cuda",
+   "load_s": 11.47,
+   "rtf_median": 0.2601,
+   "peak_rss_mb": 4846.05859375,
+   "gpu_mem_mb": null,
+   "cloning": true,
+   "wer": null,
+   "mos": null,
+   "utterances": {
+    "short_greeting": {
+     "rtf": 0.3812,
+     "audio_s": 2.2,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "medium_news": {
+     "rtf": 0.2544,
+     "audio_s": 12.36,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "long_narrative": {
+     "rtf": 0.2272,
+     "audio_s": 28.44,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "numbers_dates": {
+     "rtf": 0.2411,
+     "audio_s": 17.84,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "hard_words": {
+     "rtf": 0.2657,
+     "audio_s": 10.4,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "emotive": {
+     "rtf": 0.2691,
+     "audio_s": 8.04,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "question_dialog": {
+     "rtf": 0.2858,
+     "audio_s": 6.76,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "technical": {
+     "rtf": 0.2403,
+     "audio_s": 12.92,
+     "error": null,
+     "wer": null,
+     "mos": null
+    }
+   },
+   "name": "Chatterbox-Turbo",
+   "license": "MIT",
+   "params": "350M"
+  },
+  {
+   "id": "f5tts",
+   "label": "F5-TTS (MIT code / CC-BY-NC weights)",
+   "device": "cuda",
+   "load_s": 9.48,
+   "rtf_median": 0.1116,
+   "peak_rss_mb": 2801.76171875,
+   "gpu_mem_mb": null,
+   "cloning": true,
+   "wer": null,
+   "mos": null,
+   "utterances": {
+    "short_greeting": {
+     "rtf": 0.5364,
+     "audio_s": 3.509,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "medium_news": {
+     "rtf": 0.1137,
+     "audio_s": 19.562,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "long_narrative": {
+     "rtf": 0.1007,
+     "audio_s": 41.439,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "numbers_dates": {
+     "rtf": 0.1042,
+     "audio_s": 14.773,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "hard_words": {
+     "rtf": 0.1195,
+     "audio_s": 16.511,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "emotive": {
+     "rtf": 0.1096,
+     "audio_s": 11.339,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "question_dialog": {
+     "rtf": 0.0999,
+     "audio_s": 12.768,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "technical": {
+     "rtf": 0.1178,
+     "audio_s": 17.557,
+     "error": null,
+     "wer": null,
+     "mos": null
+    }
+   },
+   "name": "F5-TTS",
+   "license": "MIT code / CC-BY-NC weights",
+   "params": "336M"
+  },
+  {
+   "id": "kittentts",
+   "label": "KittenTTS ~15M (Apache-2.0)",
+   "device": "cpu",
+   "load_s": 4.21,
+   "rtf_median": 0.2251,
+   "peak_rss_mb": 523.55859375,
+   "gpu_mem_mb": null,
+   "cloning": false,
+   "wer": null,
+   "mos": null,
+   "utterances": {
+    "short_greeting": {
+     "rtf": 0.2548,
+     "audio_s": 3.775,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "medium_news": {
+     "rtf": 0.237,
+     "audio_s": 17.025,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "long_narrative": {
+     "rtf": 0.2351,
+     "audio_s": 32.0,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "numbers_dates": {
+     "rtf": 0.2224,
+     "audio_s": 19.9,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "hard_words": {
+     "rtf": 0.2275,
+     "audio_s": 13.875,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "emotive": {
+     "rtf": 0.2199,
+     "audio_s": 9.875,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "question_dialog": {
+     "rtf": 0.2227,
+     "audio_s": 10.775,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "technical": {
+     "rtf": 0.2186,
+     "audio_s": 16.875,
+     "error": null,
+     "wer": null,
+     "mos": null
+    }
+   },
+   "name": "KittenTTS nano",
+   "license": "Apache-2.0",
+   "params": "15M"
+  },
+  {
+   "id": "kokoro",
+   "label": "Kokoro-82M (Apache-2.0)",
+   "device": "cuda",
+   "load_s": 6.61,
+   "rtf_median": 0.0083,
+   "peak_rss_mb": 1925.14453125,
+   "gpu_mem_mb": null,
+   "cloning": false,
+   "wer": null,
+   "mos": null,
+   "utterances": {
+    "short_greeting": {
+     "rtf": 0.0208,
+     "audio_s": 2.5,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "medium_news": {
+     "rtf": 0.0081,
+     "audio_s": 13.075,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "long_narrative": {
+     "rtf": 0.0086,
+     "audio_s": 25.15,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "numbers_dates": {
+     "rtf": 0.0081,
+     "audio_s": 18.775,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "hard_words": {
+     "rtf": 0.008,
+     "audio_s": 11.125,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "emotive": {
+     "rtf": 0.0104,
+     "audio_s": 7.0,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "question_dialog": {
+     "rtf": 0.0097,
+     "audio_s": 7.475,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "technical": {
+     "rtf": 0.0078,
+     "audio_s": 13.85,
+     "error": null,
+     "wer": null,
+     "mos": null
+    }
+   },
+   "name": "Kokoro-82M",
+   "license": "Apache-2.0",
+   "params": "82M"
+  },
+  {
+   "id": "melotts",
+   "label": "MeloTTS (MIT)",
+   "device": "cuda",
+   "load_s": 7.91,
+   "rtf_median": 0.0151,
+   "peak_rss_mb": 2465.140625,
+   "gpu_mem_mb": null,
+   "cloning": false,
+   "wer": null,
+   "mos": null,
+   "utterances": {
+    "short_greeting": {
+     "rtf": 0.0374,
+     "audio_s": 2.929,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "medium_news": {
+     "rtf": 0.011,
+     "audio_s": 13.1,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "long_narrative": {
+     "rtf": 0.0114,
+     "audio_s": 25.816,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "numbers_dates": {
+     "rtf": 0.0104,
+     "audio_s": 15.131,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "hard_words": {
+     "rtf": 0.0253,
+     "audio_s": 10.487,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "emotive": {
+     "rtf": 0.0148,
+     "audio_s": 8.038,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "question_dialog": {
+     "rtf": 0.0153,
+     "audio_s": 7.457,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "technical": {
+     "rtf": 0.0191,
+     "audio_s": 11.997,
+     "error": null,
+     "wer": null,
+     "mos": null
+    }
+   },
+   "name": "MeloTTS",
+   "license": "MIT",
+   "params": "~52M"
+  },
+  {
+   "id": "piper",
+   "label": "Piper en_US-lessac-medium (MIT)",
+   "device": "cpu",
+   "load_s": 0.97,
+   "rtf_median": 0.0221,
+   "peak_rss_mb": 491.90234375,
+   "gpu_mem_mb": null,
+   "cloning": false,
+   "wer": null,
+   "mos": null,
+   "utterances": {
+    "short_greeting": {
+     "rtf": 0.0634,
+     "audio_s": 2.31,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "medium_news": {
+     "rtf": 0.0207,
+     "audio_s": 11.935,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "long_narrative": {
+     "rtf": 0.0208,
+     "audio_s": 23.22,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "numbers_dates": {
+     "rtf": 0.0241,
+     "audio_s": 15.917,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "hard_words": {
+     "rtf": 0.0199,
+     "audio_s": 8.893,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "emotive": {
+     "rtf": 0.0233,
+     "audio_s": 7.024,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "question_dialog": {
+     "rtf": 0.0221,
+     "audio_s": 7.152,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "technical": {
+     "rtf": 0.022,
+     "audio_s": 10.96,
+     "error": null,
+     "wer": null,
+     "mos": null
+    }
+   },
+   "name": "Piper (lessac-medium)",
+   "license": "MIT",
+   "params": "~20M"
+  },
+  {
+   "id": "supertonic",
+   "label": "Supertonic (ONNX int8 via sherpa-onnx)",
+   "device": "cpu",
+   "load_s": 0.36,
+   "rtf_median": 0.064,
+   "peak_rss_mb": 333.73046875,
+   "gpu_mem_mb": null,
+   "cloning": false,
+   "wer": null,
+   "mos": null,
+   "utterances": {
+    "short_greeting": {
+     "rtf": 0.0814,
+     "audio_s": 2.923,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "medium_news": {
+     "rtf": 0.0667,
+     "audio_s": 14.624,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "long_narrative": {
+     "rtf": 0.0642,
+     "audio_s": 29.116,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "numbers_dates": {
+     "rtf": 0.0612,
+     "audio_s": 19.137,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "hard_words": {
+     "rtf": 0.063,
+     "audio_s": 11.478,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "emotive": {
+     "rtf": 0.0639,
+     "audio_s": 8.346,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "question_dialog": {
+     "rtf": 0.0656,
+     "audio_s": 8.353,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "technical": {
+     "rtf": 0.0631,
+     "audio_s": 12.961,
+     "error": null,
+     "wer": null,
+     "mos": null
+    }
+   },
+   "name": "Supertonic int8",
+   "license": "OpenRAIL-M",
+   "params": "66M"
+  },
+  {
+   "id": "vibevoice",
+   "label": "VibeVoice-1.5B community fork (MIT)",
+   "device": "cuda",
+   "load_s": 6.31,
+   "rtf_median": 0.8197,
+   "peak_rss_mb": 4783.4453125,
+   "gpu_mem_mb": null,
+   "cloning": true,
+   "wer": null,
+   "mos": null,
+   "utterances": {
+    "short_greeting": {
+     "rtf": 1.3622,
+     "audio_s": 2.4,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "medium_news": {
+     "rtf": 0.8273,
+     "audio_s": 14.533,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "long_narrative": {
+     "rtf": 0.8565,
+     "audio_s": 26.4,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "numbers_dates": {
+     "rtf": 0.7966,
+     "audio_s": 18.4,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "hard_words": {
+     "rtf": 0.8151,
+     "audio_s": 10.267,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "emotive": {
+     "rtf": 0.8244,
+     "audio_s": 9.6,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "question_dialog": {
+     "rtf": 0.8025,
+     "audio_s": 8.4,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "technical": {
+     "rtf": 0.7915,
+     "audio_s": 13.6,
+     "error": null,
+     "wer": null,
+     "mos": null
+    }
+   },
+   "name": "VibeVoice-1.5B",
+   "license": "MIT",
+   "params": "1.5B"
+  },
+  {
+   "id": "xtts",
+   "label": "XTTS-v2 (CPML, non-commercial)",
+   "device": "cuda",
+   "load_s": 12.54,
+   "rtf_median": 0.2373,
+   "peak_rss_mb": 4621.69921875,
+   "gpu_mem_mb": null,
+   "cloning": true,
+   "wer": null,
+   "mos": null,
+   "utterances": {
+    "short_greeting": {
+     "rtf": 0.1955,
+     "audio_s": 3.745,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "medium_news": {
+     "rtf": 0.2422,
+     "audio_s": 14.486,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "long_narrative": {
+     "rtf": 0.2389,
+     "audio_s": 30.253,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "numbers_dates": {
+     "rtf": 0.2357,
+     "audio_s": 18.849,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "hard_words": {
+     "rtf": 0.2324,
+     "audio_s": 12.395,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "emotive": {
+     "rtf": 0.2692,
+     "audio_s": 9.495,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "question_dialog": {
+     "rtf": 0.2628,
+     "audio_s": 7.703,
+     "error": null,
+     "wer": null,
+     "mos": null
+    },
+    "technical": {
+     "rtf": 0.2084,
+     "audio_s": 17.227,
+     "error": null,
+     "wer": null,
+     "mos": null
+    }
+   },
+   "name": "XTTS-v2",
+   "license": "CPML (non-commercial)",
+   "params": "~470M"
+  }
+ ]
+}

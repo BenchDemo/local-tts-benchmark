@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Local TTS Benchmark — 10 open-source models, one machine</title>
+<meta name="description" content="Head-to-head benchmark of open-source text-to-speech models: speed, memory, intelligibility and predicted quality, with listenable output.">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%230b0d0f'/><path d='M3 13V7h2v6zm4 0V3h2v10zm4 0V9h2v4z' fill='%23e39b2d'/></svg>">
+</head>
+<body>
+
+<header class="masthead frame">
+  <div class="masthead-rule" aria-hidden="true"></div>
+  <p class="kicker">Field report · text-to-speech</p>
+  <h1>LOCAL TTS BENCHMARK</h1>
+  <p class="sub" id="hardware-line">10 open-source models · 8 utterances · median of 10 runs</p>
+</header>
+
+<main>
+  <section id="kpis" class="kpi-row" aria-label="Headline numbers"></section>
+
+  <section class="frame panel">
+    <h2><span class="h-index">01</span> Speed — real-time factor</h2>
+    <p class="panel-note">Synthesis seconds per second of audio produced; the median across
+    all utterances, each utterance the median of 10 runs. Below 1.0 is faster than real time.
+    <span class="key key-amber">GPU</span> runs hot on CUDA, <span class="key key-steel">CPU</span> runs cold.</p>
+    <div id="chart-rtf" class="chart" role="img" aria-label="Bar chart of median real-time factor per model"></div>
+  </section>
+
+  <div class="panel-pair">
+    <section class="frame panel">
+      <h2><span class="h-index">02</span> Cold start</h2>
+      <p class="panel-note">Seconds from process launch to ready.</p>
+      <div id="chart-load" class="chart"></div>
+    </section>
+    <section class="frame panel">
+      <h2><span class="h-index">03</span> Memory footprint</h2>
+      <p class="panel-note">Peak resident memory of the model process.</p>
+      <div id="chart-rss" class="chart"></div>
+    </section>
+  </div>
+
+  <section class="frame panel" id="quality-panel" hidden>
+    <h2><span class="h-index">04</span> Quality — predicted MOS &amp; intelligibility</h2>
+    <p class="panel-note">UTMOS22 predicted mean-opinion-score (1–5, higher is better) and
+    word error rate of a Whisper large-v3-turbo transcription against the source text
+    (lower is better).</p>
+    <div class="panel-pair-inner">
+      <div id="chart-mos" class="chart"></div>
+      <div id="chart-wer" class="chart"></div>
+    </div>
+  </section>
+
+  <section class="frame panel">
+    <h2><span class="h-index" id="table-index">04</span> The ledger</h2>
+    <p class="panel-note">Every number behind the charts. Click a column to sort.</p>
+    <div class="table-scroll">
+      <table id="ledger">
+        <thead></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="frame panel">
+    <h2><span class="h-index" id="listen-index">05</span> The listening room</h2>
+    <p class="panel-note">Same text, every voice. Cloning-capable models
+    (<span class="clone-mark" aria-hidden="true">◈</span>) share one reference voice;
+    the rest use their stock voice.</p>
+    <div id="listening"></div>
+  </section>
+</main>
+
+<footer>
+  <p id="footer-meta"></p>
+  <p>Harness: per-model uv venv, JSONL adapter protocol, stdlib runner ·
+  WER via faster-whisper large-v3-turbo + jiwer · MOS via speechmos UTMOS22.
+  Some model weights are non-commercial (see license column) — samples are for evaluation only.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
