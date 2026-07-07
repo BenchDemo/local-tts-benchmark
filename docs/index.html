@@ -43,9 +43,11 @@
 
   <section class="frame panel" id="quality-panel" hidden>
     <h2><span class="h-index">04</span> Quality — predicted MOS &amp; intelligibility</h2>
-    <p class="panel-note">UTMOS22 predicted mean-opinion-score (1–5, higher is better) and
-    word error rate of a Whisper large-v3-turbo transcription against the source text
-    (lower is better).</p>
+    <p class="panel-note"><abbr title="Mean opinion score: predicted listener rating of naturalness, scale 1–5. Higher is better.">MOS</abbr>
+    is the naturalness rating a listener would give (predicted by UTMOS22, 1–5, higher is better);
+    <abbr title="Word error rate: fraction of words Whisper mis-hears when transcribing the clip back. Lower is better.">WER</abbr>
+    is the share of words a Whisper transcription gets wrong versus the source text
+    (lower is better) — how intelligible the speech is.</p>
     <div class="panel-pair-inner">
       <div id="chart-mos" class="chart"></div>
       <div id="chart-wer" class="chart"></div>
@@ -74,6 +76,13 @@
 </main>
 
 <footer>
+  <h2 class="sr-only">Glossary</h2>
+  <dl class="glossary">
+    <dt>RTF</dt><dd>Real-time factor: seconds of compute per second of audio produced. 0.1 means 10× faster than real time. Lower is better.</dd>
+    <dt>MOS</dt><dd>Mean opinion score: predicted listener rating of naturalness (UTMOS22 model), scale 1–5. Higher is better.</dd>
+    <dt>WER</dt><dd>Word error rate: fraction of words Whisper mis-hears when transcribing the clip back, compared to the source text. Lower is better.</dd>
+    <dt>RSS</dt><dd>Resident set size: peak RAM used by the model process.</dd>
+  </dl>
   <p id="footer-meta"></p>
   <p>Harness: per-model uv venv, JSONL adapter protocol, stdlib runner ·
   WER via faster-whisper large-v3-turbo + jiwer · MOS via speechmos UTMOS22.

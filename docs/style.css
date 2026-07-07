@@ -32,7 +32,7 @@ body {
   color: var(--ink);
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
   line-height: 1.55;
-  max-width: 1080px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 24px 64px;
 }
@@ -142,7 +142,9 @@ h2 {
 
 /* --- ledger table ------------------------------------------------------ */
 .table-scroll { overflow-x: auto; }
-table { border-collapse: collapse; width: 100%; font-size: 0.92rem; white-space: nowrap; }
+table { border-collapse: collapse; width: 100%; font-size: 0.92rem; }
+td { white-space: nowrap; }
+td:nth-child(3) { white-space: normal; }  /* license text may wrap */
 th, td { padding: 8px 12px; text-align: right; }
 th:first-child, td:first-child { text-align: left; }
 td:nth-child(2), td:nth-child(3), th:nth-child(2), th:nth-child(3) { text-align: left; }
@@ -257,3 +259,21 @@ td.model-cell { font-weight: 600; color: var(--ink); }
 
 footer { color: var(--ink-mute); font-size: 0.82rem; margin-top: 40px; text-align: center; }
 footer p { margin: 4px 0; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap;
+}
+
+/* --- acronyms & glossary ------------------------------------------------ */
+abbr[title] {
+  text-decoration: underline dotted color-mix(in oklab, var(--accent) 65%, transparent);
+  text-underline-offset: 3px; cursor: help;
+}
+.glossary {
+  display: grid; grid-template-columns: max-content 1fr;
+  gap: 4px 14px; max-width: 72ch; margin: 0 auto 18px;
+  text-align: left; font-size: 0.85rem;
+}
+.glossary dt { color: var(--accent); font-weight: 600; letter-spacing: 0.06em; }
+.glossary dd { color: var(--ink-2); margin: 0; }

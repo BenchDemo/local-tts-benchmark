@@ -5,6 +5,14 @@
    every mark, table view carries everything. */
 "use strict";
 
+/* Acronym definitions — shown as <abbr> hovers and in the footer glossary. */
+const GLOSS = {
+  RTF: "Real-time factor: seconds of compute per second of audio produced. 0.1 means 10× faster than real time. Lower is better.",
+  MOS: "Mean opinion score: predicted listener rating of naturalness (UTMOS22 model), scale 1–5. Higher is better.",
+  WER: "Word error rate: fraction of words Whisper mis-hears when transcribing the clip back, compared to the source text. Lower is better.",
+  RSS: "Resident set size: peak RAM used by the model process.",
+};
+
 const C = {
   gpu: "#c48018", cpu: "#3f8dc4",
   ink: "#e8ebe6", ink2: "#9aa5a8", mute: "#6b7478",
@@ -120,7 +128,16 @@ function kpi(label, value, small, note) {
   d.className = "kpi";
   const l = document.createElement("div"); l.className = "k-label"; l.textContent = label;
   const v = document.createElement("div"); v.className = "k-value"; v.textContent = value;
-  if (small) { const s = document.createElement("small"); s.textContent = " " + small; v.appendChild(s); }
+  if (small) {
+    const s = document.createElement("small");
+    if (GLOSS[small]) {
+      const ab = document.createElement("abbr");
+      ab.title = GLOSS[small];
+      ab.textContent = small;
+      s.append(" ", ab);
+    } else s.textContent = " " + small;
+    v.appendChild(s);
+  }
   const n = document.createElement("div"); n.className = "k-note"; n.textContent = note || "";
   d.append(l, v, n);
   return d;
@@ -155,7 +172,16 @@ function renderTable(models) {
       if (state.key === c.key) th.setAttribute("aria-sort", state.dir === 1 ? "ascending" : "descending");
       const btn = document.createElement("button");
       btn.className = "th-sort";
-      btn.textContent = c.label + " ";
+      // Wrap a known acronym in <abbr> with its definition
+      const acro = c.label.match(/^(RTF|MOS|WER|RSS)\b/);
+      if (acro) {
+        const ab = document.createElement("abbr");
+        ab.title = GLOSS[acro[1]];
+        ab.textContent = acro[1];
+        btn.append(ab, document.createTextNode(c.label.slice(acro[1].length) + " "));
+      } else {
+        btn.textContent = c.label + " ";
+      }
       if (state.key === c.key) {
         const a = document.createElement("span");
         a.className = "arrow";
