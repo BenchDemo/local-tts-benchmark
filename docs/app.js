@@ -47,23 +47,23 @@ function showTip(evt, title, lines) {
 const hideTip = () => (tip.style.visibility = "hidden");
 
 /* Horizontal bar chart. rows: [{name, value, device, detail}] */
-function barChart(mount, rows, { unit = "", digits = 2, domainMax, desc = false } = {}) {
+function barChart(mount, rows, { unit = "", digits = 2, domainMax, desc = false, label = "" } = {}) {
   mount.replaceChildren();
   rows = rows.filter(r => r.value != null).sort((a, b) => desc ? b.value - a.value : a.value - b.value);
   if (!rows.length) return;
   const BAR = 18, GAP = 12, LABEL_W = 200, VAL_W = 78, TICK_H = 22;
   const W = 920, H = rows.length * (BAR + GAP) + TICK_H + 6;
   const plotW = W - LABEL_W - VAL_W;
-  const max = domainMax || rows[rows.length - 1].value;
+  const max = domainMax || Math.max(...rows.map(r => r.value));
   const ticks = niceTicks(max, 5);
   const scale = v => (v / ticks[ticks.length - 1]) * plotW;
 
-  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, "aria-hidden": "true" }, mount);
+  const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "group", "aria-label": label }, mount);
 
   for (const t of ticks) {
     const x = LABEL_W + scale(t);
     el("line", { x1: x, y1: 0, x2: x, y2: H - TICK_H, stroke: t === 0 ? C.baseline : C.hairline, "stroke-width": 1 }, svg);
-    const lbl = el("text", { x, y: H - 6, "text-anchor": "middle", fill: C.mute, "font-size": 11 }, svg);
+    const lbl = el("text", { x, y: H - 6, "text-anchor": "middle", fill: C.mute, "font-size": 11, "aria-hidden": "true" }, svg);
     lbl.textContent = fmt(t, digits) + (t === ticks[ticks.length - 1] && unit ? " " + unit : "");
   }
 
@@ -72,11 +72,15 @@ function barChart(mount, rows, { unit = "", digits = 2, domainMax, desc = false 
     const w = Math.max(scale(r.value), 2);
     const color = r.device === "cpu" ? C.cpu : C.gpu;
 
-    const name = el("text", { x: LABEL_W - 12, y: y + BAR / 2 + 4, "text-anchor": "end", fill: C.ink, "font-size": 13, "font-weight": 600 }, svg);
+    const name = el("text", { x: LABEL_W - 12, y: y + BAR / 2 + 4, "text-anchor": "end", fill: C.ink, "font-size": 13, "font-weight": 600, "aria-hidden": "true" }, svg);
     name.textContent = r.name;
 
-    // hit target first (renders under bar; CSS sibling selector lifts bar)
-    const hit = el("rect", { x: 0, y: y - GAP / 2, width: W, height: BAR + GAP, class: "bar-hit", tabindex: 0 }, svg);
+    // hit target first (renders under bar; CSS sibling selector lifts bar).
+    // Carries the accessible name for the whole row.
+    const hit = el("rect", {
+      x: 0, y: y - GAP / 2, width: W, height: BAR + GAP, class: "bar-hit", tabindex: 0,
+      role: "img", "aria-label": `${r.name}: ${fmt(r.value, digits)}${unit ? " " + unit : ""}, ${r.device === "cpu" ? "CPU" : "GPU"}`,
+    }, svg);
     // 4px rounded data-end, square baseline: rounded rect clipped at the left
     const clipId = `c${mount.id}${i}`;
     const clip = el("clipPath", { id: clipId }, svg);
@@ -87,7 +91,7 @@ function barChart(mount, rows, { unit = "", digits = 2, domainMax, desc = false 
       style: `animation-delay:${i * 45}ms`,
     }, svg);
 
-    const val = el("text", { x: LABEL_W + w + 8, y: y + BAR / 2 + 4, fill: C.ink2, "font-size": 12.5, class: "bar-val" }, svg);
+    const val = el("text", { x: LABEL_W + w + 8, y: y + BAR / 2 + 4, fill: C.ink2, "font-size": 12.5, class: "bar-val", "aria-hidden": "true" }, svg);
     val.textContent = fmt(r.value, digits) + (unit ? " " + unit : "");
 
     const lines = [`device: ${r.device || "?"}`, ...(r.detail || [])];
@@ -147,18 +151,24 @@ function renderTable(models) {
     const hr = document.createElement("tr");
     for (const c of COLS) {
       const th = document.createElement("th");
-      th.textContent = c.label + " ";
+      th.setAttribute("scope", "col");
+      if (state.key === c.key) th.setAttribute("aria-sort", state.dir === 1 ? "ascending" : "descending");
+      const btn = document.createElement("button");
+      btn.className = "th-sort";
+      btn.textContent = c.label + " ";
       if (state.key === c.key) {
         const a = document.createElement("span");
         a.className = "arrow";
+        a.setAttribute("aria-hidden", "true");
         a.textContent = state.dir === 1 ? "▼" : "▲";
-        th.appendChild(a);
+        btn.appendChild(a);
       }
-      th.addEventListener("click", () => {
+      btn.addEventListener("click", () => {
         state.dir = state.key === c.key ? -state.dir : 1;
         state.key = c.key;
         draw();
       });
+      th.appendChild(btn);
       hr.appendChild(th);
     }
     thead.appendChild(hr);
@@ -184,7 +194,8 @@ function renderTable(models) {
         const v = m[c.key];
         if (c.key === "name") {
           td.className = "model-cell";
-          td.textContent = m.name + (m.cloning ? " ◈" : "");
+          td.textContent = m.name;
+          if (m.cloning) td.appendChild(cloneMark());
         } else if (c.key === "device") {
           const b = document.createElement("span");
           b.className = "dev-badge " + (v === "cpu" ? "cpu" : "gpu");
@@ -208,6 +219,15 @@ function renderTable(models) {
 }
 
 /* ---------------- listening room ---------------- */
+function cloneMark() {
+  const mark = document.createElement("span");
+  mark.className = "clone-mark";
+  mark.setAttribute("role", "img");
+  mark.setAttribute("aria-label", "voice-cloning model");
+  mark.textContent = " ◈";
+  return mark;
+}
+
 let nowPlaying = null; // one clip at a time
 
 function fmtTime(s) {
@@ -300,12 +320,7 @@ function renderListening(data) {
       const name = document.createElement("div");
       name.className = "p-name";
       name.textContent = m.name;
-      if (m.cloning) {
-        const mark = document.createElement("span");
-        mark.className = "clone-mark";
-        mark.textContent = " ◈";
-        name.appendChild(mark);
-      }
+      if (m.cloning) name.appendChild(cloneMark());
       const dev = document.createElement("span");
       dev.className = "p-dev";
       dev.textContent = (m.device || "?").toUpperCase();
@@ -343,15 +358,15 @@ fetch("data.json").then(r => r.json()).then(data => {
 
   barChart(document.getElementById("chart-rtf"),
     M.map(m => ({ name: m.name, value: m.rtf_median, device: m.device, detail: [`load ${fmt(m.load_s, 1)}s`, `params ${m.params}`] })),
-    { unit: "RTF", digits: 3 });
+    { unit: "RTF", digits: 3, label: "Median real-time factor per model, lower is faster" });
 
   barChart(document.getElementById("chart-load"),
     M.map(m => ({ name: m.name, value: m.load_s, device: m.device })),
-    { unit: "s", digits: 1 });
+    { unit: "s", digits: 1, label: "Model load time in seconds" });
 
   barChart(document.getElementById("chart-rss"),
     M.map(m => ({ name: m.name, value: m.peak_rss_mb, device: m.device, detail: m.gpu_mem_mb ? [`+ ${fmt(m.gpu_mem_mb, 0)} MB GPU`] : [] })),
-    { unit: "MB", digits: 0 });
+    { unit: "MB", digits: 0, label: "Peak resident memory in megabytes" });
 
   const hasQuality = M.some(m => m.mos != null);
   if (hasQuality) {
@@ -360,10 +375,10 @@ fetch("data.json").then(r => r.json()).then(data => {
     document.getElementById("listen-index").textContent = "06";
     barChart(document.getElementById("chart-mos"),
       M.map(m => ({ name: m.name, value: m.mos, device: m.device })),
-      { unit: "MOS", digits: 2, domainMax: 5, desc: true });
+      { unit: "MOS", digits: 2, domainMax: 5, desc: true, label: "Predicted mean opinion score out of 5, higher is better" });
     barChart(document.getElementById("chart-wer"),
       M.map(m => ({ name: m.name, value: m.wer, device: m.device })),
-      { unit: "WER", digits: 3 });
+      { unit: "WER", digits: 3, label: "Word error rate, lower is better" });
   }
 
   renderTable(M);
