@@ -45,64 +45,64 @@
    "peak_rss_mb": 4846.05859375,
    "gpu_mem_mb": null,
    "cloning": true,
-   "wer": null,
-   "mos": null,
+   "wer": 0.0412,
+   "mos": 4.36,
    "utterances": {
     "short_greeting": {
      "rtf": 0.3812,
      "audio_s": 2.2,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0,
+     "mos": 4.207
     },
     "medium_news": {
      "rtf": 0.2544,
      "audio_s": 12.36,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0645,
+     "mos": 4.479
     },
     "long_narrative": {
      "rtf": 0.2272,
      "audio_s": 28.44,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.026,
+     "mos": 4.466
     },
     "numbers_dates": {
      "rtf": 0.2411,
      "audio_s": 17.84,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.1667,
+     "mos": 4.49
     },
     "hard_words": {
      "rtf": 0.2657,
      "audio_s": 10.4,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0,
+     "mos": 4.382
     },
     "emotive": {
      "rtf": 0.2691,
      "audio_s": 8.04,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0,
+     "mos": 4.349
     },
     "question_dialog": {
      "rtf": 0.2858,
      "audio_s": 6.76,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.037,
+     "mos": 4.065
     },
     "technical": {
      "rtf": 0.2403,
      "audio_s": 12.92,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0357,
+     "mos": 4.441
     }
    },
    "name": "Chatterbox-Turbo",
@@ -113,69 +113,69 @@
    "id": "f5tts",
    "label": "F5-TTS (MIT code / CC-BY-NC weights)",
    "device": "cuda",
-   "load_s": 9.48,
-   "rtf_median": 0.1116,
-   "peak_rss_mb": 2801.76171875,
+   "load_s": 10.37,
+   "rtf_median": 0.1125,
+   "peak_rss_mb": 2895.05859375,
    "gpu_mem_mb": null,
    "cloning": true,
-   "wer": null,
-   "mos": null,
+   "wer": 0.0937,
+   "mos": 3.944,
    "utterances": {
     "short_greeting": {
-     "rtf": 0.5364,
+     "rtf": 0.2238,
      "audio_s": 3.509,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0,
+     "mos": 3.18
     },
     "medium_news": {
-     "rtf": 0.1137,
+     "rtf": 0.1122,
      "audio_s": 19.562,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0968,
+     "mos": 4.455
     },
     "long_narrative": {
-     "rtf": 0.1007,
+     "rtf": 0.1017,
      "audio_s": 41.439,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.1558,
+     "mos": 3.845
     },
     "numbers_dates": {
-     "rtf": 0.1042,
+     "rtf": 0.108,
      "audio_s": 14.773,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.4167,
+     "mos": 4.485
     },
     "hard_words": {
-     "rtf": 0.1195,
+     "rtf": 0.1237,
      "audio_s": 16.511,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0435,
+     "mos": 4.352
     },
     "emotive": {
-     "rtf": 0.1096,
+     "rtf": 0.1128,
      "audio_s": 11.339,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0,
+     "mos": 2.665
     },
     "question_dialog": {
-     "rtf": 0.0999,
+     "rtf": 0.1047,
      "audio_s": 12.768,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.037,
+     "mos": 4.419
     },
     "technical": {
-     "rtf": 0.1178,
+     "rtf": 0.1231,
      "audio_s": 17.557,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0,
+     "mos": 4.147
     }
    },
    "name": "F5-TTS",
@@ -186,69 +186,69 @@
    "id": "kittentts",
    "label": "KittenTTS ~15M (Apache-2.0)",
    "device": "cpu",
-   "load_s": 4.21,
-   "rtf_median": 0.2251,
-   "peak_rss_mb": 523.55859375,
+   "load_s": 0.92,
+   "rtf_median": 0.2201,
+   "peak_rss_mb": 641.6640625,
    "gpu_mem_mb": null,
    "cloning": false,
-   "wer": null,
-   "mos": null,
+   "wer": 0.0395,
+   "mos": 3.501,
    "utterances": {
     "short_greeting": {
-     "rtf": 0.2548,
+     "rtf": 0.2386,
      "audio_s": 3.775,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0,
+     "mos": 3.62
     },
     "medium_news": {
-     "rtf": 0.237,
+     "rtf": 0.226,
      "audio_s": 17.025,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0645,
+     "mos": 3.665
     },
     "long_narrative": {
-     "rtf": 0.2351,
+     "rtf": 0.2297,
      "audio_s": 32.0,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0,
+     "mos": 3.306
     },
     "numbers_dates": {
-     "rtf": 0.2224,
+     "rtf": 0.2235,
      "audio_s": 19.9,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.2083,
+     "mos": 3.581
     },
     "hard_words": {
-     "rtf": 0.2275,
+     "rtf": 0.2105,
      "audio_s": 13.875,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0435,
+     "mos": 3.342
     },
     "emotive": {
-     "rtf": 0.2199,
+     "rtf": 0.2129,
      "audio_s": 9.875,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0,
+     "mos": 3.7
     },
     "question_dialog": {
-     "rtf": 0.2227,
+     "rtf": 0.2163,
      "audio_s": 10.775,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0,
+     "mos": 3.51
     },
     "technical": {
-     "rtf": 0.2186,
+     "rtf": 0.2167,
      "audio_s": 16.875,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0,
+     "mos": 3.286
     }
    },
    "name": "KittenTTS nano",
@@ -264,64 +264,64 @@
    "peak_rss_mb": 1925.14453125,
    "gpu_mem_mb": null,
    "cloning": false,
-   "wer": null,
-   "mos": null,
+   "wer": 0.0488,
+   "mos": 4.508,
    "utterances": {
     "short_greeting": {
      "rtf": 0.0208,
      "audio_s": 2.5,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0,
+     "mos": 4.463
     },
     "medium_news": {
      "rtf": 0.0081,
      "audio_s": 13.075,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0645,
+     "mos": 4.556
     },
     "long_narrative": {
      "rtf": 0.0086,
      "audio_s": 25.15,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.039,
+     "mos": 4.534
     },
     "numbers_dates": {
      "rtf": 0.0081,
      "audio_s": 18.775,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.25,
+     "mos": 4.552
     },
     "hard_words": {
      "rtf": 0.008,
      "audio_s": 11.125,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0,
+     "mos": 4.522
     },
     "emotive": {
      "rtf": 0.0104,
      "audio_s": 7.0,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0,
+     "mos": 4.507
     },
     "question_dialog": {
      "rtf": 0.0097,
      "audio_s": 7.475,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.037,
+     "mos": 4.526
     },
     "technical": {
      "rtf": 0.0078,
      "audio_s": 13.85,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0,
+     "mos": 4.402
     }
    },
    "name": "Kokoro-82M",
@@ -337,64 +337,64 @@
    "peak_rss_mb": 2465.140625,
    "gpu_mem_mb": null,
    "cloning": false,
-   "wer": null,
-   "mos": null,
+   "wer": 0.0693,
+   "mos": 3.743,
    "utterances": {
     "short_greeting": {
      "rtf": 0.0374,
      "audio_s": 2.929,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0,
+     "mos": 3.654
     },
     "medium_news": {
      "rtf": 0.011,
      "audio_s": 13.1,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0968,
+     "mos": 3.934
     },
     "long_narrative": {
      "rtf": 0.0114,
      "audio_s": 25.816,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.026,
+     "mos": 3.481
     },
     "numbers_dates": {
      "rtf": 0.0104,
      "audio_s": 15.131,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.2083,
+     "mos": 4.051
     },
     "hard_words": {
      "rtf": 0.0253,
      "audio_s": 10.487,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0435,
+     "mos": 3.726
     },
     "emotive": {
      "rtf": 0.0148,
      "audio_s": 8.038,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0,
+     "mos": 3.505
     },
     "question_dialog": {
      "rtf": 0.0153,
      "audio_s": 7.457,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.037,
+     "mos": 3.764
     },
     "technical": {
      "rtf": 0.0191,
      "audio_s": 11.997,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.1429,
+     "mos": 3.825
     }
    },
    "name": "MeloTTS",
@@ -405,69 +405,69 @@
    "id": "piper",
    "label": "Piper en_US-lessac-medium (MIT)",
    "device": "cpu",
-   "load_s": 0.97,
-   "rtf_median": 0.0221,
-   "peak_rss_mb": 491.90234375,
+   "load_s": 1.02,
+   "rtf_median": 0.0223,
+   "peak_rss_mb": 743.1484375,
    "gpu_mem_mb": null,
    "cloning": false,
-   "wer": null,
-   "mos": null,
+   "wer": 0.0439,
+   "mos": 4.268,
    "utterances": {
     "short_greeting": {
-     "rtf": 0.0634,
-     "audio_s": 2.31,
+     "rtf": 0.0251,
+     "audio_s": 2.264,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0,
+     "mos": 4.376
     },
     "medium_news": {
-     "rtf": 0.0207,
-     "audio_s": 11.935,
+     "rtf": 0.023,
+     "audio_s": 11.366,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0645,
+     "mos": 4.033
     },
     "long_narrative": {
-     "rtf": 0.0208,
-     "audio_s": 23.22,
+     "rtf": 0.0215,
+     "audio_s": 23.301,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.013,
+     "mos": 4.22
     },
     "numbers_dates": {
-     "rtf": 0.0241,
-     "audio_s": 15.917,
+     "rtf": 0.0226,
+     "audio_s": 16.173,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.1667,
+     "mos": 4.161
     },
     "hard_words": {
-     "rtf": 0.0199,
-     "audio_s": 8.893,
+     "rtf": 0.0211,
+     "audio_s": 9.334,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0,
+     "mos": 4.377
     },
     "emotive": {
-     "rtf": 0.0233,
-     "audio_s": 7.024,
+     "rtf": 0.0237,
+     "audio_s": 6.618,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0,
+     "mos": 4.417
     },
     "question_dialog": {
-     "rtf": 0.0221,
-     "audio_s": 7.152,
+     "rtf": 0.022,
+     "audio_s": 7.129,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0,
+     "mos": 4.185
     },
     "technical": {
-     "rtf": 0.022,
-     "audio_s": 10.96,
+     "rtf": 0.0218,
+     "audio_s": 11.053,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.1071,
+     "mos": 4.375
     }
    },
    "name": "Piper (lessac-medium)",
@@ -478,69 +478,69 @@
    "id": "supertonic",
    "label": "Supertonic (ONNX int8 via sherpa-onnx)",
    "device": "cpu",
-   "load_s": 0.36,
-   "rtf_median": 0.064,
-   "peak_rss_mb": 333.73046875,
+   "load_s": 0.4,
+   "rtf_median": 0.065,
+   "peak_rss_mb": 411.09375,
    "gpu_mem_mb": null,
    "cloning": false,
-   "wer": null,
-   "mos": null,
+   "wer": 0.0691,
+   "mos": 4.315,
    "utterances": {
     "short_greeting": {
-     "rtf": 0.0814,
+     "rtf": 0.0747,
      "audio_s": 2.923,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.1429,
+     "mos": 4.049
     },
     "medium_news": {
-     "rtf": 0.0667,
+     "rtf": 0.0669,
      "audio_s": 14.624,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0645,
+     "mos": 4.415
     },
     "long_narrative": {
-     "rtf": 0.0642,
+     "rtf": 0.0663,
      "audio_s": 29.116,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.013,
+     "mos": 4.511
     },
     "numbers_dates": {
-     "rtf": 0.0612,
+     "rtf": 0.0648,
      "audio_s": 19.137,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.2083,
+     "mos": 4.346
     },
     "hard_words": {
-     "rtf": 0.063,
+     "rtf": 0.0653,
      "audio_s": 11.478,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0,
+     "mos": 4.33
     },
     "emotive": {
-     "rtf": 0.0639,
+     "rtf": 0.0645,
      "audio_s": 8.346,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0526,
+     "mos": 4.475
     },
     "question_dialog": {
-     "rtf": 0.0656,
+     "rtf": 0.0643,
      "audio_s": 8.353,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0,
+     "mos": 3.946
     },
     "technical": {
-     "rtf": 0.0631,
+     "rtf": 0.0647,
      "audio_s": 12.961,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0714,
+     "mos": 4.449
     }
    },
    "name": "Supertonic int8",
@@ -551,69 +551,69 @@
    "id": "vibevoice",
    "label": "VibeVoice-1.5B community fork (MIT)",
    "device": "cuda",
-   "load_s": 6.31,
-   "rtf_median": 0.8197,
-   "peak_rss_mb": 4783.4453125,
+   "load_s": 5.68,
+   "rtf_median": 0.9032,
+   "peak_rss_mb": 4783.89453125,
    "gpu_mem_mb": null,
    "cloning": true,
-   "wer": null,
-   "mos": null,
+   "wer": 0.0518,
+   "mos": 3.966,
    "utterances": {
     "short_greeting": {
-     "rtf": 1.3622,
-     "audio_s": 2.4,
+     "rtf": 0.9417,
+     "audio_s": 2.533,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0,
+     "mos": 3.814
     },
     "medium_news": {
-     "rtf": 0.8273,
-     "audio_s": 14.533,
+     "rtf": 0.8335,
+     "audio_s": 13.067,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0645,
+     "mos": 4.504
     },
     "long_narrative": {
-     "rtf": 0.8565,
-     "audio_s": 26.4,
+     "rtf": 0.8706,
+     "audio_s": 27.333,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.039,
+     "mos": 4.369
     },
     "numbers_dates": {
-     "rtf": 0.7966,
-     "audio_s": 18.4,
+     "rtf": 0.9358,
+     "audio_s": 17.2,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.125,
+     "mos": 4.408
     },
     "hard_words": {
-     "rtf": 0.8151,
-     "audio_s": 10.267,
+     "rtf": 0.8156,
+     "audio_s": 10.667,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0435,
+     "mos": 4.455
     },
     "emotive": {
-     "rtf": 0.8244,
-     "audio_s": 9.6,
+     "rtf": 0.9808,
+     "audio_s": 7.333,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.1053,
+     "mos": 1.305
     },
     "question_dialog": {
-     "rtf": 0.8025,
-     "audio_s": 8.4,
+     "rtf": 0.9889,
+     "audio_s": 7.067,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.037,
+     "mos": 4.456
     },
     "technical": {
-     "rtf": 0.7915,
-     "audio_s": 13.6,
+     "rtf": 0.8217,
+     "audio_s": 12.667,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0,
+     "mos": 4.418
     }
    },
    "name": "VibeVoice-1.5B",
@@ -629,64 +629,64 @@
    "peak_rss_mb": 4621.69921875,
    "gpu_mem_mb": null,
    "cloning": true,
-   "wer": null,
-   "mos": null,
+   "wer": 0.0544,
+   "mos": 3.931,
    "utterances": {
     "short_greeting": {
      "rtf": 0.1955,
      "audio_s": 3.745,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0,
+     "mos": 3.782
     },
     "medium_news": {
      "rtf": 0.2422,
      "audio_s": 14.486,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0968,
+     "mos": 4.292
     },
     "long_narrative": {
      "rtf": 0.2389,
      "audio_s": 30.253,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0649,
+     "mos": 3.723
     },
     "numbers_dates": {
      "rtf": 0.2357,
      "audio_s": 18.849,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.1667,
+     "mos": 4.356
     },
     "hard_words": {
      "rtf": 0.2324,
      "audio_s": 12.395,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0,
+     "mos": 3.906
     },
     "emotive": {
      "rtf": 0.2692,
      "audio_s": 9.495,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0,
+     "mos": 3.574
     },
     "question_dialog": {
      "rtf": 0.2628,
      "audio_s": 7.703,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.0,
+     "mos": 3.866
     },
     "technical": {
      "rtf": 0.2084,
      "audio_s": 17.227,
      "error": null,
-     "wer": null,
-     "mos": null
+     "wer": 0.1071,
+     "mos": 3.953
     }
    },
    "name": "XTTS-v2",

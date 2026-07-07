@@ -47,9 +47,9 @@ function showTip(evt, title, lines) {
 const hideTip = () => (tip.style.visibility = "hidden");
 
 /* Horizontal bar chart. rows: [{name, value, device, detail}] */
-function barChart(mount, rows, { unit = "", digits = 2, domainMax } = {}) {
+function barChart(mount, rows, { unit = "", digits = 2, domainMax, desc = false } = {}) {
   mount.replaceChildren();
-  rows = rows.filter(r => r.value != null).sort((a, b) => a.value - b.value);
+  rows = rows.filter(r => r.value != null).sort((a, b) => desc ? b.value - a.value : a.value - b.value);
   if (!rows.length) return;
   const BAR = 18, GAP = 12, LABEL_W = 200, VAL_W = 78, TICK_H = 22;
   const W = 920, H = rows.length * (BAR + GAP) + TICK_H + 6;
@@ -84,9 +84,10 @@ function barChart(mount, rows, { unit = "", digits = 2, domainMax } = {}) {
     el("rect", {
       x: LABEL_W - 4, y, width: w + 4, height: BAR, rx: 4,
       fill: color, class: "bar", "clip-path": `url(#${clipId})`,
+      style: `animation-delay:${i * 45}ms`,
     }, svg);
 
-    const val = el("text", { x: LABEL_W + w + 8, y: y + BAR / 2 + 4, fill: C.ink2, "font-size": 12.5 }, svg);
+    const val = el("text", { x: LABEL_W + w + 8, y: y + BAR / 2 + 4, fill: C.ink2, "font-size": 12.5, class: "bar-val" }, svg);
     val.textContent = fmt(r.value, digits) + (unit ? " " + unit : "");
 
     const lines = [`device: ${r.device || "?"}`, ...(r.detail || [])];
@@ -207,6 +208,77 @@ function renderTable(models) {
 }
 
 /* ---------------- listening room ---------------- */
+let nowPlaying = null; // one clip at a time
+
+function fmtTime(s) {
+  if (!isFinite(s)) return "0:00";
+  return `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
+}
+
+/* Compact device-colored player: play button, seek bar, time. */
+function makePlayer(src, label) {
+  const wrap = document.createElement("div");
+  wrap.className = "mini-player";
+
+  const audio = new Audio();
+  audio.preload = "metadata";
+  audio.src = src;
+
+  const btn = document.createElement("button");
+  btn.className = "pp";
+  btn.setAttribute("aria-label", "Play " + label);
+  btn.appendChild(ppIcon(false));
+
+  const seek = document.createElement("input");
+  seek.type = "range";
+  seek.className = "seek";
+  seek.min = 0; seek.max = 1000; seek.value = 0;
+  seek.setAttribute("aria-label", "Seek " + label);
+
+  const time = document.createElement("span");
+  time.className = "p-time";
+  time.textContent = "0:00";
+
+  const setIcon = playing => {
+    btn.replaceChildren(ppIcon(playing));
+    btn.setAttribute("aria-label", (playing ? "Pause " : "Play ") + label);
+    wrap.classList.toggle("playing", playing);
+  };
+
+  btn.addEventListener("click", () => {
+    if (audio.paused) {
+      if (nowPlaying && nowPlaying !== audio) nowPlaying.pause();
+      nowPlaying = audio;
+      audio.play();
+    } else audio.pause();
+  });
+  audio.addEventListener("play", () => setIcon(true));
+  audio.addEventListener("pause", () => setIcon(false));
+  audio.addEventListener("ended", () => { setIcon(false); seek.value = 0; time.textContent = fmtTime(audio.duration); });
+  audio.addEventListener("loadedmetadata", () => (time.textContent = fmtTime(audio.duration)));
+  audio.addEventListener("timeupdate", () => {
+    if (audio.duration) seek.value = (audio.currentTime / audio.duration) * 1000;
+    time.textContent = fmtTime(audio.currentTime || audio.duration);
+  });
+  seek.addEventListener("input", () => {
+    if (audio.duration) audio.currentTime = (seek.value / 1000) * audio.duration;
+  });
+
+  wrap.append(btn, seek, time);
+  return wrap;
+}
+
+function ppIcon(playing) {
+  const svg = el("svg", { viewBox: "0 0 12 12", width: 12, height: 12, "aria-hidden": "true" });
+  if (playing) {
+    el("rect", { x: 1.5, y: 1, width: 3.2, height: 10, fill: "currentColor" }, svg);
+    el("rect", { x: 7.3, y: 1, width: 3.2, height: 10, fill: "currentColor" }, svg);
+  } else {
+    el("path", { d: "M2 1 L11 6 L2 11 Z", fill: "currentColor" }, svg);
+  }
+  return svg;
+}
+
 function renderListening(data) {
   const mount = document.getElementById("listening");
   for (const utt of data.texts) {
@@ -222,7 +294,9 @@ function renderListening(data) {
     for (const m of data.models) {
       const u = m.utterances[utt.id];
       const card = document.createElement("div");
-      card.className = "player";
+      card.className = "player " + (m.device === "cpu" ? "cpu" : "gpu");
+      const head = document.createElement("div");
+      head.className = "p-head";
       const name = document.createElement("div");
       name.className = "p-name";
       name.textContent = m.name;
@@ -232,13 +306,13 @@ function renderListening(data) {
         mark.textContent = " ◈";
         name.appendChild(mark);
       }
-      card.appendChild(name);
+      const dev = document.createElement("span");
+      dev.className = "p-dev";
+      dev.textContent = (m.device || "?").toUpperCase();
+      head.append(name, dev);
+      card.appendChild(head);
       if (u && !u.error) {
-        const a = document.createElement("audio");
-        a.controls = true;
-        a.preload = "none";
-        a.src = `audio/${m.id}/${utt.id}.mp3`;
-        card.appendChild(a);
+        card.appendChild(makePlayer(`audio/${m.id}/${utt.id}.mp3`, `${m.name} — ${utt.id}`));
       } else {
         card.classList.add("missing");
         card.appendChild(document.createTextNode(u?.error ? "failed: " + u.error.slice(0, 60) : "no sample"));
@@ -286,7 +360,7 @@ fetch("data.json").then(r => r.json()).then(data => {
     document.getElementById("listen-index").textContent = "06";
     barChart(document.getElementById("chart-mos"),
       M.map(m => ({ name: m.name, value: m.mos, device: m.device })),
-      { unit: "MOS", digits: 2, domainMax: 5 });
+      { unit: "MOS", digits: 2, domainMax: 5, desc: true });
     barChart(document.getElementById("chart-wer"),
       M.map(m => ({ name: m.name, value: m.wer, device: m.device })),
       { unit: "WER", digits: 3 });

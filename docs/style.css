@@ -66,7 +66,16 @@ h1 {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 10px; margin: 22px 0;
 }
-.kpi { padding: 14px 16px; background: var(--surface); border: 1px solid var(--hairline); }
+.kpi {
+  padding: 14px 16px; background: var(--surface); border: 1px solid var(--hairline);
+  position: relative; transition: border-color 120ms;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+}
+.kpi::before {
+  content: ""; position: absolute; top: 0; left: 0;
+  width: 22px; height: 2px; background: var(--accent);
+}
+.kpi:hover { border-color: color-mix(in oklab, var(--accent) 40%, var(--hairline)); }
 .kpi .k-label {
   color: var(--ink-mute); font-size: 11px;
   letter-spacing: 0.18em; text-transform: uppercase;
@@ -103,6 +112,16 @@ h2 {
 .chart { position: relative; }
 .chart svg { display: block; width: 100%; height: auto; }
 .chart .bar { transition: filter 80ms; }
+@media (prefers-reduced-motion: no-preference) {
+  .chart .bar {
+    transform-box: fill-box; transform-origin: left center;
+    animation: bar-grow 550ms cubic-bezier(0.2, 0.7, 0.3, 1) backwards;
+  }
+  .chart .bar-val { animation: val-fade 320ms 380ms backwards; }
+  .player, .kpi { animation: val-fade 400ms backwards; }
+}
+@keyframes bar-grow { from { transform: scaleX(0); } }
+@keyframes val-fade { from { opacity: 0; } }
 .chart .bar-hit { fill: transparent; cursor: default; }
 .chart .bar-hit:hover + .bar, .chart .bar-hit:focus + .bar { filter: brightness(1.25); }
 .chart text { font-family: inherit; }
@@ -155,13 +174,67 @@ td.model-cell { font-weight: 600; color: var(--ink); }
   gap: 10px; margin-bottom: 14px;
 }
 .player {
-  background: var(--surface-2); border: 1px solid var(--hairline);
-  padding: 8px 10px 10px;
+  --pc: var(--series-gpu);
+  background:
+    linear-gradient(135deg, color-mix(in oklab, var(--pc) 7%, transparent), transparent 45%),
+    var(--surface-2);
+  border: 1px solid var(--hairline);
+  border-left: 3px solid var(--pc);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 9px), calc(100% - 9px) 100%, 0 100%);
+  padding: 9px 11px 11px;
+  transition: border-color 120ms, transform 120ms, box-shadow 120ms;
 }
-.player .p-name { font-size: 12.5px; font-weight: 600; margin-bottom: 6px; }
-.player .p-name .clone-mark { color: var(--accent); }
-.player audio { width: 100%; height: 32px; }
+.player.cpu { --pc: var(--series-cpu); }
+.player:hover {
+  border-color: color-mix(in oklab, var(--pc) 55%, var(--hairline));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 18px -8px color-mix(in oklab, var(--pc) 60%, transparent);
+}
+.player .p-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 8px; margin-bottom: 8px;
+}
+.player .p-name { font-size: 12.5px; font-weight: 600; }
+.player .p-dev {
+  font-size: 9.5px; letter-spacing: 0.18em; color: var(--ink-mute);
+  border: 1px solid var(--hairline); padding: 0 5px;
+}
 .player.missing { color: var(--ink-mute); font-size: 12px; }
+
+/* --- mini player -------------------------------------------------------- */
+.mini-player { display: flex; align-items: center; gap: 9px; }
+.mini-player .pp {
+  flex: none; width: 28px; height: 28px;
+  display: grid; place-items: center;
+  background: transparent; color: var(--pc);
+  border: 1px solid color-mix(in oklab, var(--pc) 45%, var(--hairline));
+  cursor: pointer; padding: 0;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%);
+  transition: background 120ms, color 120ms;
+}
+.mini-player .pp:hover, .mini-player.playing .pp {
+  background: var(--pc); color: var(--plane);
+}
+.mini-player .pp:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.mini-player .p-time {
+  flex: none; font-size: 11px; color: var(--ink-mute);
+  font-variant-numeric: tabular-nums; min-width: 30px; text-align: right;
+}
+.mini-player .seek {
+  flex: 1; appearance: none; height: 3px; margin: 0;
+  background: var(--baseline); cursor: pointer;
+}
+.mini-player .seek::-webkit-slider-thumb {
+  appearance: none; width: 10px; height: 10px; border-radius: 0;
+  background: var(--pc); border: none;
+  transform: rotate(45deg) scale(0.85);
+}
+.mini-player .seek::-moz-range-thumb {
+  width: 10px; height: 10px; border-radius: 0; border: none;
+  background: var(--pc); transform: rotate(45deg) scale(0.85);
+}
+.mini-player .seek::-moz-range-progress { background: var(--pc); height: 3px; }
+.mini-player.playing .seek { box-shadow: 0 0 8px -2px var(--pc); }
 .clone-mark { color: var(--accent); }
 
 footer { color: var(--ink-mute); font-size: 12px; margin-top: 40px; text-align: center; }
