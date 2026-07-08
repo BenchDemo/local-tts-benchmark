@@ -260,6 +260,60 @@ td.model-cell { font-weight: 600; color: var(--ink); }
 footer { color: var(--ink-mute); font-size: 0.82rem; margin-top: 40px; text-align: center; }
 footer p { margin: 4px 0; }
 
+/* --- model modal -------------------------------------------------------- */
+.model-open {
+  background: none; border: none; padding: 0; margin: 0;
+  font: inherit; color: inherit; cursor: pointer;
+  text-decoration: underline dotted color-mix(in oklab, var(--accent) 55%, transparent);
+  text-underline-offset: 3px;
+}
+.model-open:hover { color: var(--accent); }
+.model-open:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.model-modal {
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid color-mix(in oklab, var(--accent) 30%, var(--hairline));
+  clip-path: polygon(16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%, 0 16px);
+  padding: 26px 30px 28px;
+  max-width: min(560px, calc(100vw - 32px));
+  margin: auto;
+}
+.model-modal::backdrop { background: rgba(5, 7, 8, 0.72); backdrop-filter: blur(3px); }
+@media (prefers-reduced-motion: no-preference) {
+  .model-modal[open] { animation: val-fade 160ms; }
+}
+.mm-head { display: flex; align-items: baseline; gap: 12px; }
+.mm-head h3 { font-size: 1.35rem; letter-spacing: 0.04em; margin-right: auto; }
+.mm-close {
+  background: none; border: 1px solid var(--hairline); color: var(--ink-2);
+  width: 30px; height: 30px; cursor: pointer; font-size: 0.9rem;
+  align-self: flex-start;
+}
+.mm-close:hover { color: var(--ink); border-color: var(--accent); }
+.mm-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.mm-sub { color: var(--ink-mute); font-size: 0.82rem; letter-spacing: 0.06em; margin: 4px 0 12px; }
+.mm-desc { color: var(--ink-2); font-size: 0.92rem; margin-bottom: 18px; }
+.mm-stats {
+  display: grid; grid-template-columns: max-content 1fr; gap: 10px 16px;
+  border-top: 1px solid var(--hairline); padding-top: 16px; margin-bottom: 20px;
+}
+.mm-stats dt {
+  color: var(--ink-mute); font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase; padding-top: 2px;
+}
+.mm-stats dd { margin: 0; font-size: 0.88rem; color: var(--ink-2); }
+.mm-stats dd strong { color: var(--ink); font-size: 0.95rem; }
+.mm-links { display: flex; gap: 10px; }
+.mm-links a {
+  color: var(--accent); text-decoration: none; font-size: 0.88rem; font-weight: 600;
+  border: 1px solid color-mix(in oklab, var(--accent) 40%, var(--hairline));
+  padding: 6px 14px; letter-spacing: 0.04em;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 7px), calc(100% - 7px) 100%, 0 100%);
+}
+.mm-links a:hover { background: var(--accent); color: var(--plane); }
+.mm-links a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
 .sr-only {
   position: absolute; width: 1px; height: 1px; overflow: hidden;
   clip-path: inset(50%); white-space: nowrap;

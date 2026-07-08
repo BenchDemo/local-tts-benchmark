@@ -221,8 +221,10 @@ function renderTable(models) {
         const v = m[c.key];
         if (c.key === "name") {
           td.className = "model-cell";
-          td.textContent = m.name;
-          if (m.cloning) td.appendChild(cloneMark());
+          const label = document.createDocumentFragment();
+          label.append(m.name);
+          if (m.cloning) label.appendChild(cloneMark());
+          td.appendChild(modalTrigger(m, label));
         } else if (c.key === "device") {
           const b = document.createElement("span");
           b.className = "dev-badge " + (v === "cpu" ? "cpu" : "gpu");
@@ -243,6 +245,102 @@ function renderTable(models) {
     }
   };
   draw();
+}
+
+/* ---------------- model modal ---------------- */
+const modal = document.createElement("dialog");
+modal.className = "model-modal";
+modal.addEventListener("click", e => {
+  // click on the backdrop (the dialog element itself) closes
+  if (e.target === modal) modal.close();
+});
+document.body.appendChild(modal);
+
+function humanDur(s) {
+  if (s < 90) return `${Math.round(s)} seconds`;
+  return `${Math.round(s / 60)} minutes`;
+}
+
+function statRow(dl, label, value, meaning) {
+  const dt = document.createElement("dt");
+  dt.textContent = label;
+  const dd = document.createElement("dd");
+  const v = document.createElement("strong");
+  v.textContent = value;
+  dd.appendChild(v);
+  if (meaning) {
+    dd.appendChild(document.createElement("br"));
+    dd.appendChild(document.createTextNode(meaning));
+  }
+  dl.append(dt, dd);
+}
+
+function openModal(m) {
+  modal.replaceChildren();
+
+  const head = document.createElement("div");
+  head.className = "mm-head";
+  const title = document.createElement("h3");
+  title.id = "mm-title";
+  title.textContent = m.name;
+  if (m.cloning) title.appendChild(cloneMark());
+  const dev = document.createElement("span");
+  dev.className = "dev-badge " + (m.device === "cpu" ? "cpu" : "gpu");
+  dev.textContent = (m.device || "?").toUpperCase();
+  const close = document.createElement("button");
+  close.className = "mm-close";
+  close.setAttribute("aria-label", "Close");
+  close.textContent = "✕";
+  close.addEventListener("click", () => modal.close());
+  head.append(title, dev, close);
+  modal.setAttribute("aria-labelledby", "mm-title");
+
+  const sub = document.createElement("p");
+  sub.className = "mm-sub";
+  sub.textContent = [m.vendor, m.params + " params", m.license].filter(Boolean).join(" · ");
+
+  const desc = document.createElement("p");
+  desc.className = "mm-desc";
+  desc.textContent = m.desc || "";
+
+  const dl = document.createElement("dl");
+  dl.className = "mm-stats";
+  if (m.rtf_median != null) statRow(dl, "Speed", `${fmt(m.rtf_median, 3)} RTF`,
+    `an hour of speech in ≈ ${humanDur(3600 * m.rtf_median)} of compute`);
+  if (m.load_s != null) statRow(dl, "Cold start", `${fmt(m.load_s, 1)} s`,
+    "process launch to ready");
+  if (m.peak_rss_mb != null) statRow(dl, "Memory", `${fmt(m.peak_rss_mb / 1024, 1)} GB`,
+    "peak RAM of the model process");
+  if (m.mos != null) statRow(dl, "Naturalness", `${fmt(m.mos, 2)} / 5 MOS`,
+    m.mos_min != null ? `worst single clip ${fmt(m.mos_min, 2)} — ${m.mos - m.mos_min < 0.6 ? "very consistent" : "quality varies by text"}` : "");
+  if (m.wer != null) statRow(dl, "Intelligibility", `${(m.wer * 100).toFixed(1)}% WER`,
+    "share of words a Whisper transcription mis-hears");
+
+  const links = document.createElement("div");
+  links.className = "mm-links";
+  for (const [label, url] of [["GitHub", m.github], ["Hugging Face", m.hf]]) {
+    if (!url) continue;
+    const a = document.createElement("a");
+    a.href = url;
+    a.target = "_blank";
+    a.rel = "noopener";
+    a.textContent = label + " ↗";
+    links.appendChild(a);
+  }
+
+  modal.append(head, sub, desc, dl, links);
+  modal.showModal();
+  close.focus();
+}
+
+/* Turn a model-name node into a modal trigger */
+function modalTrigger(m, textNode) {
+  const btn = document.createElement("button");
+  btn.className = "model-open";
+  btn.setAttribute("aria-haspopup", "dialog");
+  btn.append(textNode);
+  btn.addEventListener("click", () => openModal(m));
+  return btn;
 }
 
 /* ---------------- listening room ---------------- */
@@ -346,8 +444,10 @@ function renderListening(data) {
       head.className = "p-head";
       const name = document.createElement("div");
       name.className = "p-name";
-      name.textContent = m.name;
-      if (m.cloning) name.appendChild(cloneMark());
+      const label = document.createDocumentFragment();
+      label.append(m.name);
+      if (m.cloning) label.appendChild(cloneMark());
+      name.appendChild(modalTrigger(m, label));
       const dev = document.createElement("span");
       dev.className = "p-dev";
       dev.textContent = (m.device || "?").toUpperCase();
