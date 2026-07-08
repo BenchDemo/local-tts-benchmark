@@ -154,6 +154,7 @@ const COLS = [
   { key: "peak_rss_mb", label: "RSS MB", num: true, digits: 0, bestMin: true },
   { key: "gpu_mem_mb", label: "GPU MB", num: true, digits: 0 },
   { key: "mos", label: "MOS", num: true, digits: 2, bestMax: true },
+  { key: "mos_min", label: "MOS min", num: true, digits: 2, bestMax: true },
   { key: "wer", label: "WER", num: true, digits: 3, bestMin: true },
 ];
 

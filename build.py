@@ -93,6 +93,7 @@ def main() -> int:
             "cloning": name in CLONING,
             "wer": round(sum(wers) / len(wers), 4) if wers else None,
             "mos": round(sum(moses) / len(moses), 3) if moses else None,
+            "mos_min": round(min(moses), 3) if moses else None,
             "utterances": utts,
             **META.get(name, {"name": name, "license": "?", "params": "?"}),
         })

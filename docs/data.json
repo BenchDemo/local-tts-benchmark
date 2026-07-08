@@ -45,8 +45,9 @@
    "peak_rss_mb": 4846.05859375,
    "gpu_mem_mb": null,
    "cloning": true,
-   "wer": 0.0412,
+   "wer": 0.0128,
    "mos": 4.36,
+   "mos_min": 4.065,
    "utterances": {
     "short_greeting": {
      "rtf": 0.3812,
@@ -59,7 +60,7 @@
      "rtf": 0.2544,
      "audio_s": 12.36,
      "error": null,
-     "wer": 0.0645,
+     "wer": 0.0,
      "mos": 4.479
     },
     "long_narrative": {
@@ -73,7 +74,7 @@
      "rtf": 0.2411,
      "audio_s": 17.84,
      "error": null,
-     "wer": 0.1667,
+     "wer": 0.0417,
      "mos": 4.49
     },
     "hard_words": {
@@ -94,14 +95,14 @@
      "rtf": 0.2858,
      "audio_s": 6.76,
      "error": null,
-     "wer": 0.037,
+     "wer": 0.0,
      "mos": 4.065
     },
     "technical": {
      "rtf": 0.2403,
      "audio_s": 12.92,
      "error": null,
-     "wer": 0.0357,
+     "wer": 0.0345,
      "mos": 4.441
     }
    },
@@ -118,8 +119,9 @@
    "peak_rss_mb": 2895.05859375,
    "gpu_mem_mb": null,
    "cloning": true,
-   "wer": 0.0937,
+   "wer": 0.0748,
    "mos": 3.944,
+   "mos_min": 2.665,
    "utterances": {
     "short_greeting": {
      "rtf": 0.2238,
@@ -132,28 +134,28 @@
      "rtf": 0.1122,
      "audio_s": 19.562,
      "error": null,
-     "wer": 0.0968,
+     "wer": 0.0,
      "mos": 4.455
     },
     "long_narrative": {
      "rtf": 0.1017,
      "audio_s": 41.439,
      "error": null,
-     "wer": 0.1558,
+     "wer": 0.1818,
      "mos": 3.845
     },
     "numbers_dates": {
      "rtf": 0.108,
      "audio_s": 14.773,
      "error": null,
-     "wer": 0.4167,
+     "wer": 0.375,
      "mos": 4.485
     },
     "hard_words": {
      "rtf": 0.1237,
      "audio_s": 16.511,
      "error": null,
-     "wer": 0.0435,
+     "wer": 0.0417,
      "mos": 4.352
     },
     "emotive": {
@@ -167,7 +169,7 @@
      "rtf": 0.1047,
      "audio_s": 12.768,
      "error": null,
-     "wer": 0.037,
+     "wer": 0.0,
      "mos": 4.419
     },
     "technical": {
@@ -191,8 +193,9 @@
    "peak_rss_mb": 641.6640625,
    "gpu_mem_mb": null,
    "cloning": false,
-   "wer": 0.0395,
+   "wer": 0.0208,
    "mos": 3.501,
+   "mos_min": 3.286,
    "utterances": {
     "short_greeting": {
      "rtf": 0.2386,
@@ -205,7 +208,7 @@
      "rtf": 0.226,
      "audio_s": 17.025,
      "error": null,
-     "wer": 0.0645,
+     "wer": 0.0,
      "mos": 3.665
     },
     "long_narrative": {
@@ -219,14 +222,14 @@
      "rtf": 0.2235,
      "audio_s": 19.9,
      "error": null,
-     "wer": 0.2083,
+     "wer": 0.125,
      "mos": 3.581
     },
     "hard_words": {
      "rtf": 0.2105,
      "audio_s": 13.875,
      "error": null,
-     "wer": 0.0435,
+     "wer": 0.0417,
      "mos": 3.342
     },
     "emotive": {
@@ -264,8 +267,9 @@
    "peak_rss_mb": 1925.14453125,
    "gpu_mem_mb": null,
    "cloning": false,
-   "wer": 0.0488,
+   "wer": 0.0189,
    "mos": 4.508,
+   "mos_min": 4.402,
    "utterances": {
     "short_greeting": {
      "rtf": 0.0208,
@@ -278,21 +282,21 @@
      "rtf": 0.0081,
      "audio_s": 13.075,
      "error": null,
-     "wer": 0.0645,
+     "wer": 0.0,
      "mos": 4.556
     },
     "long_narrative": {
      "rtf": 0.0086,
      "audio_s": 25.15,
      "error": null,
-     "wer": 0.039,
+     "wer": 0.026,
      "mos": 4.534
     },
     "numbers_dates": {
      "rtf": 0.0081,
      "audio_s": 18.775,
      "error": null,
-     "wer": 0.25,
+     "wer": 0.125,
      "mos": 4.552
     },
     "hard_words": {
@@ -313,7 +317,7 @@
      "rtf": 0.0097,
      "audio_s": 7.475,
      "error": null,
-     "wer": 0.037,
+     "wer": 0.0,
      "mos": 4.526
     },
     "technical": {
@@ -337,8 +341,9 @@
    "peak_rss_mb": 2465.140625,
    "gpu_mem_mb": null,
    "cloning": false,
-   "wer": 0.0693,
+   "wer": 0.0449,
    "mos": 3.743,
+   "mos_min": 3.481,
    "utterances": {
     "short_greeting": {
      "rtf": 0.0374,
@@ -351,28 +356,28 @@
      "rtf": 0.011,
      "audio_s": 13.1,
      "error": null,
-     "wer": 0.0968,
+     "wer": 0.0,
      "mos": 3.934
     },
     "long_narrative": {
      "rtf": 0.0114,
      "audio_s": 25.816,
      "error": null,
-     "wer": 0.026,
+     "wer": 0.013,
      "mos": 3.481
     },
     "numbers_dates": {
      "rtf": 0.0104,
      "audio_s": 15.131,
      "error": null,
-     "wer": 0.2083,
+     "wer": 0.1667,
      "mos": 4.051
     },
     "hard_words": {
      "rtf": 0.0253,
      "audio_s": 10.487,
      "error": null,
-     "wer": 0.0435,
+     "wer": 0.0417,
      "mos": 3.726
     },
     "emotive": {
@@ -386,14 +391,14 @@
      "rtf": 0.0153,
      "audio_s": 7.457,
      "error": null,
-     "wer": 0.037,
+     "wer": 0.0,
      "mos": 3.764
     },
     "technical": {
      "rtf": 0.0191,
      "audio_s": 11.997,
      "error": null,
-     "wer": 0.1429,
+     "wer": 0.1379,
      "mos": 3.825
     }
    },
@@ -410,8 +415,9 @@
    "peak_rss_mb": 743.1484375,
    "gpu_mem_mb": null,
    "cloning": false,
-   "wer": 0.0439,
+   "wer": 0.0198,
    "mos": 4.268,
+   "mos_min": 4.033,
    "utterances": {
     "short_greeting": {
      "rtf": 0.0251,
@@ -424,7 +430,7 @@
      "rtf": 0.023,
      "audio_s": 11.366,
      "error": null,
-     "wer": 0.0645,
+     "wer": 0.0,
      "mos": 4.033
     },
     "long_narrative": {
@@ -438,7 +444,7 @@
      "rtf": 0.0226,
      "audio_s": 16.173,
      "error": null,
-     "wer": 0.1667,
+     "wer": 0.0417,
      "mos": 4.161
     },
     "hard_words": {
@@ -466,7 +472,7 @@
      "rtf": 0.0218,
      "audio_s": 11.053,
      "error": null,
-     "wer": 0.1071,
+     "wer": 0.1034,
      "mos": 4.375
     }
    },
@@ -483,8 +489,9 @@
    "peak_rss_mb": 411.09375,
    "gpu_mem_mb": null,
    "cloning": false,
-   "wer": 0.0691,
+   "wer": 0.0426,
    "mos": 4.315,
+   "mos_min": 3.946,
    "utterances": {
     "short_greeting": {
      "rtf": 0.0747,
@@ -497,21 +504,21 @@
      "rtf": 0.0669,
      "audio_s": 14.624,
      "error": null,
-     "wer": 0.0645,
+     "wer": 0.0,
      "mos": 4.415
     },
     "long_narrative": {
      "rtf": 0.0663,
      "audio_s": 29.116,
      "error": null,
-     "wer": 0.013,
+     "wer": 0.0,
      "mos": 4.511
     },
     "numbers_dates": {
      "rtf": 0.0648,
      "audio_s": 19.137,
      "error": null,
-     "wer": 0.2083,
+     "wer": 0.0833,
      "mos": 4.346
     },
     "hard_words": {
@@ -525,7 +532,7 @@
      "rtf": 0.0645,
      "audio_s": 8.346,
      "error": null,
-     "wer": 0.0526,
+     "wer": 0.0455,
      "mos": 4.475
     },
     "question_dialog": {
@@ -539,7 +546,7 @@
      "rtf": 0.0647,
      "audio_s": 12.961,
      "error": null,
-     "wer": 0.0714,
+     "wer": 0.069,
      "mos": 4.449
     }
    },
@@ -556,8 +563,9 @@
    "peak_rss_mb": 4783.89453125,
    "gpu_mem_mb": null,
    "cloning": true,
-   "wer": 0.0518,
+   "wer": 0.0198,
    "mos": 3.966,
+   "mos_min": 1.305,
    "utterances": {
     "short_greeting": {
      "rtf": 0.9417,
@@ -570,42 +578,42 @@
      "rtf": 0.8335,
      "audio_s": 13.067,
      "error": null,
-     "wer": 0.0645,
+     "wer": 0.0,
      "mos": 4.504
     },
     "long_narrative": {
      "rtf": 0.8706,
      "audio_s": 27.333,
      "error": null,
-     "wer": 0.039,
+     "wer": 0.026,
      "mos": 4.369
     },
     "numbers_dates": {
      "rtf": 0.9358,
      "audio_s": 17.2,
      "error": null,
-     "wer": 0.125,
+     "wer": 0.0,
      "mos": 4.408
     },
     "hard_words": {
      "rtf": 0.8156,
      "audio_s": 10.667,
      "error": null,
-     "wer": 0.0435,
+     "wer": 0.0417,
      "mos": 4.455
     },
     "emotive": {
      "rtf": 0.9808,
      "audio_s": 7.333,
      "error": null,
-     "wer": 0.1053,
+     "wer": 0.0909,
      "mos": 1.305
     },
     "question_dialog": {
      "rtf": 0.9889,
      "audio_s": 7.067,
      "error": null,
-     "wer": 0.037,
+     "wer": 0.0,
      "mos": 4.456
     },
     "technical": {
@@ -629,8 +637,9 @@
    "peak_rss_mb": 4621.69921875,
    "gpu_mem_mb": null,
    "cloning": true,
-   "wer": 0.0544,
+   "wer": 0.0295,
    "mos": 3.931,
+   "mos_min": 3.574,
    "utterances": {
     "short_greeting": {
      "rtf": 0.1955,
@@ -643,21 +652,21 @@
      "rtf": 0.2422,
      "audio_s": 14.486,
      "error": null,
-     "wer": 0.0968,
+     "wer": 0.0,
      "mos": 4.292
     },
     "long_narrative": {
      "rtf": 0.2389,
      "audio_s": 30.253,
      "error": null,
-     "wer": 0.0649,
+     "wer": 0.0909,
      "mos": 3.723
     },
     "numbers_dates": {
      "rtf": 0.2357,
      "audio_s": 18.849,
      "error": null,
-     "wer": 0.1667,
+     "wer": 0.0417,
      "mos": 4.356
     },
     "hard_words": {
@@ -685,7 +694,7 @@
      "rtf": 0.2084,
      "audio_s": 17.227,
      "error": null,
-     "wer": 0.1071,
+     "wer": 0.1034,
      "mos": 3.953
     }
    },
