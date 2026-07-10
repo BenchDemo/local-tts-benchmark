@@ -54,6 +54,24 @@ body {
   position: absolute; top: 0; left: 20%; right: 20%; height: 2px;
   background: linear-gradient(90deg, transparent, var(--accent), transparent);
 }
+.masthead-qr {
+  position: absolute; top: 18px; right: 18px;
+  display: flex; flex-direction: column; align-items: center; gap: 5px;
+  text-decoration: none;
+}
+.masthead-qr img {
+  display: block; background: #e8ebe6; padding: 5px;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+}
+.masthead-qr span {
+  color: var(--ink-mute); font-size: 0.68rem;
+  letter-spacing: 0.22em; text-transform: uppercase;
+}
+.masthead-qr:hover span { color: var(--accent); }
+.masthead-qr:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+/* On a phone you're already at the link — reclaim the space */
+@media (max-width: 900px) { .masthead-qr { display: none; } }
+
 .kicker {
   color: var(--accent);
   font-size: 0.82rem; letter-spacing: 0.34em; text-transform: uppercase;
